@@ -1,0 +1,634 @@
+# PROJECT
+
+You are a senior Product Designer, Frontend Architect, Motion Designer, and Creative Technologist.
+
+Your job is NOT to build a webpage.
+
+Your job is to create a memorable digital experience.
+
+Imagine this project is going to win an Awwwards Site of the Day.
+
+This is a private birthday gift for my best friend.
+
+The final result should feel like opening a magical birthday present that slowly unfolds into an emotional interactive story.
+
+The experience should be so polished that someone forgets they're looking at a website.
+
+------------------------------------------------------------
+
+# TECHNOLOGY
+
+Choose the BEST technology stack automatically.
+
+You are free to use modern tools if they improve the experience.
+
+Examples include:
+
+• React
+• Next.js
+• Vite
+• TailwindCSS
+• Framer Motion
+• GSAP
+• Lenis
+• Three.js (only if it genuinely improves the experience)
+• SVG animations
+• Lottie
+• Lucide Icons
+• ShadCN UI
+
+Do NOT use libraries unless they genuinely improve the final product.
+
+The priority is the quality of the experience.
+
+The final project should deploy easily on:
+
+• Replit
+• Vercel
+• Netlify
+
+Provide clear instructions to run and deploy.
+
+------------------------------------------------------------
+
+# THE PERSON
+
+This birthday website is for someone who loves:
+
+💜 BTS
+
+🌸 Anime
+
+🎬 Korean Dramas
+
+🎨 Drawing
+
+✏ Sketching
+
+🖌 Digital Art
+
+📖 Manga
+
+☕
+
+Cozy cafés
+
+🌙 Night skies
+
+✨ Stars
+
+🌸 Cherry Blossoms
+
+💜 Purple aesthetics
+
+📷 Photography
+
+🎵 Listening to music while drawing
+
+Cute stationery
+
+Journaling
+
+Comforting, cozy spaces
+
+She is artistic, emotional, creative, and appreciates thoughtful little details.
+
+Everything should feel handcrafted for her.
+
+------------------------------------------------------------
+
+# DESIGN DIRECTION
+
+Imagine combining:
+
+Apple
+
+Pinterest
+
+Studio Ghibli
+
+A beautifully designed K-Drama opening
+
+A BTS concert intro
+
+A Japanese stationery shop
+
+A premium scrapbook
+
+A cozy café
+
+A modern interactive portfolio
+
+The website should feel:
+
+Elegant
+
+Warm
+
+Soft
+
+Dreamy
+
+Minimal
+
+Cute
+
+Premium
+
+Never childish.
+
+Never cluttered.
+
+Never feel like a birthday template.
+
+------------------------------------------------------------
+
+# COLOR PALETTE
+
+Cream
+
+Lavender
+
+Pastel Pink
+
+Soft Purple
+
+Warm White
+
+Mint accents
+
+Soft Gold Sparkles
+
+Nothing overly saturated.
+
+------------------------------------------------------------
+
+# EXPERIENCE
+
+The website should not immediately reveal everything.
+
+It should tell a story.
+
+The user slowly discovers the gift.
+
+Think of it as a six chapter interactive experience.
+
+Each chapter transitions beautifully into the next.
+
+------------------------------------------------------------
+
+CHAPTER 1
+
+The Invitation
+
+A mysterious envelope appears.
+
+Beautiful animation.
+
+Opening it begins the story.
+
+------------------------------------------------------------
+
+CHAPTER 2
+
+Birthday Verification
+
+Create a fake birthday verification process.
+
+Funny friendship verification.
+
+Little jokes.
+
+Cute animations.
+
+------------------------------------------------------------
+
+CHAPTER 3
+
+Loading Birthday Magic
+
+Beautiful loading sequence.
+
+Funny messages.
+
+Examples:
+
+Calling BTS...
+
+Collecting cherry blossoms...
+
+Preparing cake...
+
+Loading happiness...
+
+Finding your bias...
+
+Preparing the soundtrack...
+
+Downloading memories...
+
+Summoning birthday magic...
+
+------------------------------------------------------------
+
+CHAPTER 4
+
+The Chase
+
+Ask:
+
+"Are you ready for your birthday surprise?"
+
+YES
+
+NO
+
+The NO button should become an entire interaction.
+
+It should dodge.
+
+Shrink.
+
+Move.
+
+Eventually surrender.
+
+The dialogue should react every time.
+
+Make this genuinely funny.
+
+------------------------------------------------------------
+
+CHAPTER 5
+
+Mystery Gift
+
+Several animated gift boxes.
+
+Only one reveals the surprise.
+
+Wrong ones reveal funny surprises.
+
+Cute interactions.
+
+Reward curiosity.
+
+------------------------------------------------------------
+
+CHAPTER 6
+
+The Birthday Scrapbook
+
+The page opens into a beautiful interactive scrapbook.
+
+Not a long webpage.
+
+An experience.
+
+Include beautiful transitions between sections.
+
+------------------------------------------------------------
+
+SCRAPBOOK CONTENT
+
+Create sections for:
+
+• Birthday message
+
+• Photo gallery
+
+• Timeline of memories
+
+• Interactive music player
+
+• Artist corner
+
+• BTS corner
+
+• Anime corner
+
+• K-Drama corner
+
+• Interactive birthday cake
+
+• Hidden easter eggs
+
+• Final surprise
+
+Every section should feel unique.
+
+------------------------------------------------------------
+
+PHOTO GALLERY
+
+Polaroid style.
+
+Beautiful hover effects.
+
+Lightbox.
+
+Smooth animations.
+
+Missing photos should gracefully fall back to beautiful illustrated placeholders.
+
+------------------------------------------------------------
+
+LETTER
+
+Beautiful handwritten paper.
+
+Animated unfolding.
+
+Typewriter effect.
+
+Feels emotional.
+
+------------------------------------------------------------
+
+MUSIC
+
+Beautiful custom player.
+
+YouTube support.
+
+Spotify support.
+
+Music never auto plays.
+
+------------------------------------------------------------
+
+ARTIST CORNER
+
+One of the most beautiful sections.
+
+She loves drawing.
+
+Create an interactive sketchbook.
+
+Notebook paper.
+
+Brushes.
+
+Pastel colors.
+
+Finger support.
+
+Save drawing.
+
+Cute illustrations.
+
+Little doodles.
+
+Creative quotes.
+
+Drawing prompts.
+
+Inspiration gallery.
+
+------------------------------------------------------------
+
+BTS CORNER
+
+Tastefully inspired.
+
+Purple aesthetic.
+
+Concert lights.
+
+Photocard inspired layout.
+
+Album inspired cards.
+
+Favorite songs.
+
+Favorite member.
+
+Purple hearts.
+
+Music recommendations.
+
+Beautiful interactions.
+
+------------------------------------------------------------
+
+ANIME CORNER
+
+Cherry blossoms.
+
+Dreamy skies.
+
+Animated clouds.
+
+Recommended anime.
+
+Beautiful cards.
+
+Illustrated aesthetic.
+
+------------------------------------------------------------
+
+KDRAMA CORNER
+
+Warm city lights.
+
+Romantic atmosphere.
+
+Netflix inspired cards.
+
+Favorite dramas.
+
+Favorite OST.
+
+Favorite scenes.
+
+------------------------------------------------------------
+
+INTERACTIVE CAKE
+
+A beautiful animated cake.
+
+Candles.
+
+Blow them out.
+
+Smoke.
+
+Confetti.
+
+Fireworks.
+
+Make a wish.
+
+------------------------------------------------------------
+
+SECRET EASTER EGGS
+
+Hide surprises throughout the website.
+
+Reward exploration.
+
+Ideas:
+
+Hidden stars.
+
+Clickable moon.
+
+Secret BTS mode.
+
+Purple rain.
+
+Konami code.
+
+Hidden messages.
+
+Tiny animations.
+
+Unexpected interactions.
+
+------------------------------------------------------------
+
+FINAL SURPRISE
+
+The emotional climax.
+
+Beautiful cinematic animation.
+
+Confetti.
+
+Fireworks.
+
+Cherry blossoms.
+
+Music begins only after interaction.
+
+A heartfelt birthday message appears.
+
+The ending should feel unforgettable.
+
+------------------------------------------------------------
+
+ANIMATIONS
+
+Prioritize quality.
+
+Every interaction should feel polished.
+
+Use:
+
+Framer Motion
+
+GSAP
+
+SVG animations
+
+Lottie
+
+CSS animations
+
+Scroll storytelling
+
+Micro interactions
+
+Hover effects
+
+Parallax
+
+Ripple effects
+
+Spring animations
+
+Beautiful easing
+
+Soft transitions
+
+------------------------------------------------------------
+
+AUDIO
+
+Optional.
+
+Muted by default.
+
+User enables manually.
+
+Tiny sounds for:
+
+Envelope
+
+Paper
+
+Buttons
+
+Gift
+
+Fireworks
+
+Cake
+
+Drawing
+
+------------------------------------------------------------
+
+CONFIGURATION
+
+Create a single configuration file or object where I only edit:
+
+Name
+
+Nickname
+
+Age
+
+Birthday message
+
+Final message
+
+Photos
+
+Gallery
+
+Timeline
+
+Favorite BTS member
+
+Favorite songs
+
+Favorite anime
+
+Favorite dramas
+
+Music links
+
+YouTube
+
+Spotify
+
+Messages
+
+Everything else updates automatically.
+
+------------------------------------------------------------
+
+QUALITY STANDARD
+
+This should not feel like an AI-generated birthday page.
+
+It should feel like a professionally designed interactive experience.
+
+Prioritize emotional storytelling over adding lots of features.
+
+Every animation should have purpose.
+
+Every transition should feel intentional.
+
+Every section should have a "wow" moment.
+
+If there is a choice between adding another feature or polishing an existing interaction, always choose polish.
+
+The final result should feel like a magical digital keepsake that someone would happily revisit years later.
+
+Take your time.
+
+Think like a designer, not just a programmer.
+
+Surprise me.
