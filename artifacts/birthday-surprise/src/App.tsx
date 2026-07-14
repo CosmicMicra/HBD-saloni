@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Volume2, VolumeX } from 'lucide-react';
 import { config } from '@/config/birthday.config';
@@ -8,46 +7,46 @@ import { config } from '@/config/birthday.config';
 import Invitation from '@/components/chapters/Invitation';
 import Verification from '@/components/chapters/Verification';
 import LoadingMagic from '@/components/chapters/LoadingMagic';
-import TheChase from '@/components/chapters/TheChase';
-import MysteryGift from '@/components/chapters/MysteryGift';
 import Scrapbook from '@/components/chapters/Scrapbook';
-import NotFound from '@/pages/not-found';
 import { Toaster } from '@/components/ui/sonner';
 
 export type Chapter = 1 | 2 | 3 | 4;
 
 function BirthdayExperience() {
   const [currentChapter, setCurrentChapter] = useState<Chapter>(1);
-  const [musicMuted, setMusicMuted] = useState(false); // Start unmuted by default
+  const [musicMuted, setMusicMuted] = useState(true); // Wait for first tap (browser autoplay rules)
   const [bgmActiveTab, setBgmActiveTab] = useState<string>('');
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Sync state with HTML5 audio element
+  const playBgm = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.3;
+    audio.play().catch(() => {
+      // Autoplay may still be blocked until a direct user gesture
+    });
+  };
+
+  // Sync mute / scrapbook playlist tab with the audio element
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = 0.35; // Soft background level
-
+    audio.volume = 0.3;
     const shouldPlay = !musicMuted && bgmActiveTab !== 'music';
     if (shouldPlay) {
-      audio.play().catch(err => {
-        console.log("Audio playback deferred or blocked:", err);
-      });
+      playBgm();
     } else {
       audio.pause();
     }
   }, [musicMuted, bgmActiveTab]);
 
-  // Handle any user click/tap anywhere on screen to trigger playback (recovery from autoplay policy block)
+  // Resume after the first tap/click (envelope, buttons, etc.)
   useEffect(() => {
     const handleGesture = () => {
+      if (musicMuted || bgmActiveTab === 'music') return;
       const audio = audioRef.current;
-      if (audio && !musicMuted && bgmActiveTab !== 'music' && audio.paused) {
-        audio.play().catch(err => {
-          console.log("Gesture trigger failed:", err);
-        });
-      }
+      if (audio?.paused) playBgm();
     };
 
     window.addEventListener('click', handleGesture);
@@ -62,17 +61,22 @@ function BirthdayExperience() {
     setCurrentChapter(prev => Math.min(prev + 1, 4) as Chapter);
   };
 
+  const openInvitation = () => {
+    setMusicMuted(false);
+    playBgm();
+    nextChapter();
+  };
+
   return (
     <div className="relative min-h-[100dvh] w-full overflow-hidden bg-background">
       <div className="grain-overlay" />
 
-      {/* Robust declarative audio tag with CORS and cross-origin preloading enabled */}
       <audio
         ref={audioRef}
         src={config.music.bgmUrl}
         loop
         preload="auto"
-        crossOrigin="anonymous"
+        playsInline
       />
 
       {/* Floating BGM toggle for early chapters */}
@@ -84,13 +88,20 @@ function BirthdayExperience() {
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ repeat: Infinity, duration: 2 }}
               className="text-[11px] md:text-xs font-handwriting text-pink-500 font-bold select-none cursor-pointer flex items-center gap-1"
-              onClick={() => setMusicMuted(false)}
+              onClick={() => {
+                setMusicMuted(false);
+                playBgm();
+              }}
             >
               Play BGM 🎵
             </motion.span>
           )}
           <button
-            onClick={() => setMusicMuted(!musicMuted)}
+            onClick={() => {
+              const next = !musicMuted;
+              setMusicMuted(next);
+              if (!next) playBgm();
+            }}
             className={`text-primary hover:scale-110 transition-transform p-1 rounded-full ${!musicMuted ? 'text-pink-500 animate-[pulse_2s_infinite]' : ''}`}
             aria-label="Toggle music"
           >
@@ -105,7 +116,13 @@ function BirthdayExperience() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
             className="absolute inset-0 flex items-center justify-center"
             transition={{ duration: 0.8, ease: "easeInOut" }}>
-            <Invitation onOpen={nextChapter} />
+            <Invitation
+              onOpen={openInvitation}
+              onFirstInteract={() => {
+                setMusicMuted(false);
+                playBgm();
+              }}
+            />
           </motion.div>
         )}
         
@@ -145,21 +162,13 @@ function BirthdayExperience() {
   );
 }
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={BirthdayExperience} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 function App() {
+  // Single-page experience — no client router needed (avoids blank page on static hosts)
   return (
-    <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-      <Router />
+    <>
+      <BirthdayExperience />
       <Toaster />
-    </WouterRouter>
+    </>
   );
 }
 

@@ -1,102 +1,121 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { config } from '@/config/birthday.config';
-import { Music, Disc3, Heart } from 'lucide-react';
+import { Music, Heart, Pause, Play } from 'lucide-react';
 
 export default function MusicPage() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const song = config.music.customSong;
+
+  const togglePlay = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+      return;
+    }
+
+    try {
+      audio.volume = 0.85;
+      await audio.play();
+      setPlaying(true);
+    } catch {
+      setPlaying(false);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto pt-16 pb-32">
-      <div className="flex flex-col items-center gap-20">
-        
-        {/* Cassette / YouTube Embed Container */}
+      <div className="flex flex-col items-center gap-16">
         <motion.div
-          initial={{ opacity: 0, y: 20, rotate: -2 }}
-          animate={{ opacity: 1, y: 0, rotate: -2 }}
+          initial={{ opacity: 0, y: 20, rotate: 3 }}
+          animate={{ opacity: 1, y: 0, rotate: 3 }}
           transition={{ duration: 0.6 }}
-          className="relative w-full max-w-2xl"
-        >
-          {/* Tape strips */}
-          <div className="absolute -top-5 -left-8 w-24 h-8 bg-white/40 backdrop-blur-sm shadow-sm rotate-[12deg] z-20 border border-white/20" />
-          <div className="absolute -bottom-5 -right-8 w-24 h-8 bg-white/40 backdrop-blur-sm shadow-sm rotate-[15deg] z-20 border border-white/20" />
-          
-          <div className="bg-[#e8e5df] p-4 md:p-6 rounded-md shadow-[4px_6px_20px_rgba(0,0,0,0.15)] border-2 border-[#d3cebc] relative overflow-hidden">
-            {/* Cassette screws detailing */}
-            <div className="absolute top-3 left-4 flex gap-1.5 opacity-30">
-              <div className="w-2.5 h-2.5 rounded-full bg-black/60 shadow-inner" />
-            </div>
-            <div className="absolute top-3 right-4 flex gap-1.5 opacity-30">
-              <div className="w-2.5 h-2.5 rounded-full bg-black/60 shadow-inner" />
-            </div>
-            <div className="absolute bottom-3 left-4 flex gap-1.5 opacity-30">
-              <div className="w-2.5 h-2.5 rounded-full bg-black/60 shadow-inner" />
-            </div>
-            <div className="absolute bottom-3 right-4 flex gap-1.5 opacity-30">
-              <div className="w-2.5 h-2.5 rounded-full bg-black/60 shadow-inner" />
-            </div>
-
-            {/* Label Area */}
-            <div className="bg-[#fcfbf9] border-2 border-black/10 rounded-sm p-3 mb-5 mx-8 flex items-center justify-between">
-              <Disc3 className="w-6 h-6 text-primary/60 animate-[spin_4s_linear_infinite]" />
-              <div className="flex flex-col items-center">
-                <span className="font-handwriting text-3xl text-foreground/80 font-bold -mt-1">
-                  Salo's Mixtape
-                </span>
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">Vol. 24</span>
-              </div>
-              <Heart className="w-5 h-5 fill-primary/40 text-primary/60" />
-            </div>
-
-            {/* The actual video player */}
-            <div className="bg-[#1a1a1a] p-3 rounded-lg shadow-inner border border-black/20 w-full">
-              <div className="aspect-video w-full overflow-hidden rounded-md bg-black">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${config.music.youtubeId}?autoplay=0&controls=1&rel=0`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-            
-            {/* Bottom trapezoid area of cassette */}
-            <div className="mt-4 mx-auto w-3/4 h-8 border-t-2 border-x-2 border-black/10 rounded-t-lg bg-[#dfdbc8] shadow-inner" />
-          </div>
-        </motion.div>
-
-        {/* Spotify Embed Container - smaller note taped below */}
-        <motion.div
-          initial={{ opacity: 0, y: 20, rotate: 4 }}
-          animate={{ opacity: 1, y: 0, rotate: 4 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
           className="relative w-full max-w-md"
         >
           {/* Tape piece */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-20 h-7 bg-white/50 backdrop-blur-sm shadow-sm rotate-[-4deg] z-20 border border-white/30" />
-          
-          <div className="bg-[#fbf9f4] p-4 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] border border-black/5 rounded-sm transform origin-top hover:rotate-2 transition-transform duration-300">
+
+          <div className="bg-[#fbf9f4] p-4 shadow-[2px_4px_12px_rgba(0,0,0,0.1)] border border-black/5 rounded-sm transform origin-top">
             <div className="mb-3 flex justify-between items-center opacity-70 px-1">
               <span className="font-handwriting text-xl text-foreground">Current obsession</span>
               <Music className="w-4 h-4 text-foreground" />
             </div>
-            
-            <div className="border border-black/10 p-1 bg-black/5 rounded-[14px]">
-              <iframe
-                style={{ borderRadius: '10px' }}
-                src={config.music.spotifyLink}
-                width="100%"
-                height="152"
-                frameBorder="0"
-                allowFullScreen
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              ></iframe>
+
+            <div className="rounded-2xl overflow-hidden border border-black/10 bg-gradient-to-b from-[#1a1224] to-[#0c0714] text-white shadow-inner">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={config.music.coverUrl}
+                  alt="Crown of Gold cover"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0714] via-[#0c0714]/35 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-amber-200/80">
+                    A custom song
+                  </p>
+                  <h3 className="font-serif text-2xl text-amber-50 leading-tight mt-0.5">
+                    {song.title}
+                  </h3>
+                  <p className="text-sm text-pink-200/90 mt-1 flex items-center gap-1.5">
+                    <Heart className="w-3.5 h-3.5 fill-pink-300/80 text-pink-300/80" />
+                    {song.artistCredit}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 pt-3 space-y-4">
+                <p className="font-handwriting text-lg text-amber-50/95 leading-relaxed whitespace-pre-line">
+                  {song.dedication}
+                </p>
+
+                <audio
+                  ref={audioRef}
+                  src={config.music.bgmUrl}
+                  preload="metadata"
+                  loop
+                  onEnded={() => setPlaying(false)}
+                  onPause={() => setPlaying(false)}
+                  onPlay={() => setPlaying(true)}
+                />
+
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  className="w-full flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-yellow-200 to-pink-300 text-[#2a1830] font-medium py-3 shadow-[0_8px_24px_rgba(251,191,36,0.25)] hover:brightness-105 active:scale-[0.98] transition"
+                >
+                  {playing ? (
+                    <>
+                      <Pause className="w-4 h-4 fill-current" />
+                      Pause Crown of Gold
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-4 h-4 fill-current" />
+                      Play Crown of Gold
+                    </>
+                  )}
+                </button>
+
+                <p className="text-center text-[11px] tracking-wide text-white/45 uppercase">
+                  {song.note}
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
 
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+          className="max-w-sm text-center font-handwriting text-2xl text-foreground/55 rotate-[-1deg]"
+        >
+          No Spotify. No YouTube. Just this — made for you.
+        </motion.p>
       </div>
     </div>
   );

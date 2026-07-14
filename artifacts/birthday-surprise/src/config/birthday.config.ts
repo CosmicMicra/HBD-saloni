@@ -90,10 +90,24 @@ export const config = {
     "That you know how loved you are, always."
   ],
   music: {
-    // We'll embed a soft lofi or BTS piano cover
-    youtubeId: "pBuZEGYXA6E", // Spring day piano cover example
-    spotifyLink: "https://open.spotify.com/embed/track/2bJvI42r8EF3wxjOuDavnw?utm_source=generator&theme=0",
-    bgmUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+    // Custom song for Salo — local file + cover art in /public
+    bgmUrl: "/Crown_of_Gold.mp3",
+    coverUrl: "/crown_of_gold_cover.png",
+    customSong: {
+      title: "Crown of Gold",
+      artistCredit: "Written for you, Salo",
+      dedication: `This one's mine to you.
+
+Not a chart song. Not a playlist fill.
+Just a little crown I made for the girl who laughs at the same random things I do —
+who dreams out loud, draws her world soft and bright,
+and somehow makes every ordinary day feel a little more golden.
+
+On your birthday, I hope you hear this and know:
+you are the king of my weird little universe,
+and I love you — always, noisily, forever.`,
+      note: "A song from me → you. Press play."
+    }
   },
   loadingMessages: [
     "Calling BTS...", 

@@ -5,14 +5,16 @@ import { config } from '@/config/birthday.config';
 
 interface InvitationProps {
   onOpen: () => void;
+  onFirstInteract?: () => void;
 }
 
-export default function Invitation({ onOpen }: InvitationProps) {
+export default function Invitation({ onOpen, onFirstInteract }: InvitationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showCard, setShowCard] = useState(false);
 
   const handleOpen = () => {
     if (isOpen) return;
+    onFirstInteract?.();
     setIsOpen(true);
     // After envelope opens, reveal the invitation card with a slight delay
     setTimeout(() => {
